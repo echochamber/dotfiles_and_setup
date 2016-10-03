@@ -3,21 +3,28 @@
 # * Installing racer
 # * Adding environment variables
 
-sudo curl -sf https://raw.githubusercontent.com/brson/multirust/master/blastoff.sh | sh
-multirust default nightly
 
-rust_external_path ="$HOME/Code/rust/external_stuff/"
-
-if [ ! -d "$rust_external_path" ] then
-    mkdir -p "$rust_external_path"
+# Path where external rustlang clone will live (for autocomplete purposes)
+if [ ! command -v rustc ]
+    then
+        curl -sSf https://static.rust-lang.org/rustup.sh | sh
 fi
 
-if [ ! -d "$rust_external_path/rustlang" ] then
+rust_external_path="$HOME/Code/external_stuff/rust"
+
+if [ ! -d "$rust_external_path" ]
+    then
+        mkdir -p "$rust_external_path"
+fi
+
+if [ ! -d "$rust_external_path/rustlang" ]
+    then
     git clone https://github.com/rust-lang/rust "$rust_external_path/rustlang"
 fi
 
-if [ ! -d "$rust_external_path/racer" ] then
-    git clone https://github.com/phildawes/racer "$rust_external_path/racer"
+if [ ! command -v racer ]
+    then
+    cargo install racer
 fi
 
 echo "export RUST_SRC_PATH=\"$rust_external_path/rustlang/src\"" >> $HOME/.profile

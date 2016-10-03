@@ -1,6 +1,6 @@
 [user]
-	name = Jason Schein
-	email = jasonschein@gmail.com
+	name = REPLACE_ME
+	email = REPLACE_ME
 [core]
     editor = vim
 [color]
@@ -14,3 +14,5 @@
 [alias]
     conflicts = !git ls-files -u | cut -f 2 | sort -u
     fshow = ! sh -c 'git show --pretty="format:" --name-only $1 | grep -v "^$" | uniq | sed -e "s#^#`git rev-parse --show-toplevel`/#"' -
+    # List files that have changes since branching off master
+    ldf = "!f() { git diff --name-only \"$(git merge-base HEAD ${1:-origin/master})\"; }; f"
