@@ -9,9 +9,6 @@ Bundle 'gmarik/vundle'
     Bundle 'flazz/vim-colorschemes'
     set background=light
 
-    "Nerdtree Folder Management
-    Bundle 'scrooloose/nerdtree'
-
     "Powerline: Cool thing at bottom of screep
     Bundle 'Lokaltog/powerline'
 
@@ -80,9 +77,6 @@ nmap <C-l> <C-w>l
 
 " Make control C copy to the clipboard
 nmap <C-c> "+y
-
-
-nmap <C-n> :NERDTreeToggle<cr>
 
 
 "Show (partial) command in the status line
